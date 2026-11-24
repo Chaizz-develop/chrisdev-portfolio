@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChrisDev — Digital Portfolio</title>
+  <meta name="description" content="ChrisDev's digital portfolio — Web Developer & UI/UX Designer. Projects, experience, achievements, and CV." />
+  <meta name="theme-color" content="#050508" />
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233b82f6'/%3E%3Cstop offset='0.55' stop-color='%23050508'/%3E%3Cstop offset='1' stop-color='%23ef4444'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23bg)'/%3E%3Ctext x='30' y='47' font-family='Arial Black,Arial,sans-serif' font-size='38' font-weight='900' fill='white' text-anchor='middle'%3EC%3C/text%3E%3Ccircle cx='50' cy='50' r='5.5' fill='%23ef4444' stroke='white' stroke-width='1.4'/%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233b82f6'/%3E%3Cstop offset='0.55' stop-color='%23050508'/%3E%3Cstop offset='1' stop-color='%23ef4444'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23bg)'/%3E%3Ctext x='30' y='47' font-family='Arial Black,Arial,sans-serif' font-size='38' font-weight='900' fill='white' text-anchor='middle'%3EC%3C/text%3E%3Ccircle cx='50' cy='50' r='5.5' fill='%23ef4444' stroke='white' stroke-width='1.4'/%3E%3C/svg%3E" />
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- TAILWIND -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            ink: { 900:'#050508', 800:'#0a0a12', 700:'#12121c', 600:'#1a1a26' },
+            accent: {
+              blue:'#3b82f6', 'blue-light':'#60a5fa', 'blue-dark':'#1e40af',
+              red:'#ef4444', 'red-light':'#f87171', 'red-dark':'#b91c1c'
+            }
+          },
+          fontFamily: { display: ['Sora','sans-serif'], body: ['Plus Jakarta Sans','sans-serif'] },
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="font-body bg-[var(--bg)] text-[var(--text)] antialiased overflow-x-hidden">
+
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-blue"></div>
+    <div class="orb orb-red"></div>
+    <div class="orb orb-blue-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-[72px]">
+      <a href="#home" class="flex items-center gap-2 font-display font-extrabold text-lg tracking-tight">
+        <span class="logo-badge">C</span>
+        <span>Chris<span class="logo-dot">Dev</span></span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#cv" class="nav-link">CV</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" class="icon-btn" title="Toggle Theme">☀️</button>
+        <button id="editToggle" class="icon-btn" title="Edit Mode (password required)">✏️</button>
+        <button id="lockBtn" class="icon-btn lock-btn" title="Lock">🔒</button>
+        <button id="resetBtn" class="icon-btn reset-btn" title="Reset">🔄</button>
+        <button id="hamburger" class="icon-btn md:hidden" aria-label="Menu">
+          <span class="hamburger-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+
+    <nav id="mobileNav" class="mobile-nav md:hidden">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#portfolio" class="mobile-link">Portfolio</a>
+      <a href="#cv" class="mobile-link">CV</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="home" class="relative pt-28 sm:pt-32 pb-16 sm:pb-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col items-center text-center">
+
+        <div class="photo-wrap mb-6 sm:mb-8">
+          <div class="photo-ring"></div>
+          <div class="photo-frame">
+            <img id="profilePhoto" alt="ChrisDev Profile Photo" />
+            <button class="photo-edit" id="photoEditBtn" title="Change Photo">📷</button>
+            <input type="file" id="photoInput" accept="image/*" hidden />
+          </div>
+        </div>
+
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent-blue/40 bg-accent-blue/10 text-xs sm:text-sm text-accent-blue-light font-semibold mb-4">
+          <span class="w-2 h-2 rounded-full bg-accent-blue animate-pulse"></span>
+          Open to Opportunities
+        </div>
+
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-2">
+          <span class="brand-text editable" data-key="heroName">ChrisDev</span>
+        </h1>
+
+        <p class="text-base sm:text-lg md:text-xl font-semibold text-[var(--text-muted)] mb-3">
+          <span class="editable" data-key="heroRole">Web Developer &amp; UI/UX Designer</span>
+        </p>
+
+        <p class="text-sm sm:text-base md:text-lg italic mb-5 max-w-2xl editable" data-key="heroTagline" style="color:var(--accent-blue);">
+          “Turning ideas into meaningful digital experiences.”
+        </p>
+
+        <p class="max-w-2xl text-sm sm:text-base leading-relaxed mb-8 editable" data-key="heroDesc" style="color:var(--text-muted);">
+          I am a student with a strong focus on web development and interface design. I enjoy
+          building clean, functional, and user-centered digital solutions, with a career interest
+          in Front-End Development and UI/UX Design.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+          <a href="#portfolio" class="btn-primary">View Portfolio →</a>
+          <a href="#contact" class="btn-outline">Get in Touch</a>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 mb-10 w-full max-w-md">
+          <div class="stat-card"><div class="stat-num" data-target="12" data-suffix="+">0+</div><div class="stat-label">Projects</div></div>
+          <div class="stat-card"><div class="stat-num" data-target="5" data-suffix="+">0+</div><div class="stat-label">Experience</div></div>
+          <div class="stat-card"><div class="stat-num" data-target="8" data-suffix="+">0+</div><div class="stat-label">Awards</div></div>
+        </div>
+
+        <div class="flex gap-2 sm:gap-3">
+          <a href="mailto:email@you.com" class="social-btn" title="Email">✉</a>
+          <a href="https://linkedin.com/in/username" target="_blank" rel="noopener" class="social-btn" title="LinkedIn">in</a>
+          <a href="https://github.com/username" target="_blank" rel="noopener" class="social-btn" title="GitHub">gh</a>
+          <a href="https://instagram.com/username" target="_blank" rel="noopener" class="social-btn" title="Instagram">ig</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section section-alt">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="section-head">
+        <span class="section-label">◆ About Me</span>
+        <h2 class="section-title">Get to Know Me</h2>
+        <p class="section-sub">Educational background, core values, and skills.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
+        <div class="about-card reveal">
+          <div class="card-icon">🎓</div>
+          <h3 class="card-title">Education</h3>
+          <div class="editable" data-key="aboutEdu">
+            <p class="edu-school">School / University Name</p>
+            <p class="edu-major">Major / Study Program</p>
+            <p class="edu-year">Year of Entry — Year of Graduation</p>
+          </div>
+        </div>
+        <div class="about-card reveal">
+          <div class="card-icon">💎</div>
+          <h3 class="card-title">Core Values</h3>
+          <ul class="value-list editable" data-key="aboutValues">
+            <li><strong>Integrity</strong> — honest, consistent, and responsible.</li>
+            <li><strong>Collaboration</strong> — open-minded and enjoy teamwork.</li>
+            <li><strong>Growth</strong> — eager to learn and adapt quickly.</li>
+          </ul>
+        </div>
+        <div class="about-card reveal md:col-span-2 lg:col-span-1">
+          <div class="card-icon">🎯</div>
+          <h3 class="card-title">Career Goal</h3>
+          <p class="editable" data-key="aboutGoal" style="color:var(--text-muted);">
+            To contribute as a web developer or UI designer in an environment that encourages
+            innovation, while continuing to sharpen both technical and soft skills.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="font-display text-xl sm:text-2xl font-bold text-center mb-8">Skills</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="skill-block reveal">
+          <div class="flex items-center gap-2.5 mb-4"><span class="text-xl">⚙️</span><h4 class="font-bold text-base">Hard Skills</h4></div>
+          <div class="flex flex-wrap gap-2 editable" data-key="hardSkills">
+            <span class="tag">HTML &amp; CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">UI/UX Design</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Microsoft Office</span>
+            <span class="tag">Git &amp; GitHub</span>
+          </div>
+        </div>
+        <div class="skill-block reveal">
+          <div class="flex items-center gap-2.5 mb-4"><span class="text-xl">🤝</span><h4 class="font-bold text-base">Soft Skills</h4></div>
+          <div class="flex flex-wrap gap-2 editable" data-key="softSkills">
+            <span class="tag tag-red">Communication</span>
+            <span class="tag tag-red">Teamwork</span>
+            <span class="tag tag-red">Time Management</span>
+            <span class="tag tag-red">Problem Solving</span>
+            <span class="tag tag-red">Leadership</span>
+            <span class="tag tag-red">Critical Thinking</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PORTFOLIO ============ -->
+  <section id="portfolio" class="section">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="section-head">
+        <span class="section-label">◆ Portfolio</span>
+        <h2 class="section-title">Projects &amp; Experience</h2>
+        <p class="section-sub">
+          Works, school projects, organizations, committees, and achievements — complete with my role and responsibilities.
+        </p>
+      </div>
+
+      <div id="filterBar" class="flex flex-wrap justify-center gap-2 mb-10">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="design">Design</button>
+        <button class="filter-btn" data-filter="organisasi">Organization</button>
+        <button class="filter-btn" data-filter="prestasi">Achievement</button>
+      </div>
+
+      <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"></div>
+
+      <div class="portfolio-actions hidden justify-center mt-10">
+        <button id="addPortfolioBtn" class="btn-primary">+ Add Portfolio</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CV ============ -->
+  <section id="cv" class="section section-alt">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="section-head">
+        <span class="section-label">◆ CV / Resume</span>
+        <h2 class="section-title">Download My CV</h2>
+        <p class="section-sub">Full details of my education and experience in PDF format.</p>
+      </div>
+
+      <div class="cv-card reveal">
+        <div class="cv-icon">📄</div>
+        <div class="flex-1 min-w-[180px]">
+          <h3 class="font-display font-bold text-lg mb-1">Curriculum Vitae</h3>
+          <p class="text-sm" style="color:var(--text-muted);">PDF file · ready to download</p>
+        </div>
+        <a href="cv.pdf" download id="cvDownload" class="btn-primary">⬇ Download CV</a>
+      </div>
+
+      <div id="cvEditRow" class="cv-edit-row">
+        <label class="text-sm font-semibold">CV Link:</label>
+        <input type="text" id="cvLinkInput" placeholder="cv.pdf or https://..." class="edit-input flex-1 min-w-[220px]" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="section-head">
+        <span class="section-label">◆ Contact</span>
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-sub">Open to collaboration, projects, internships, or just a friendly chat.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        <div class="flex flex-col gap-3">
+          <a href="mailto:email@you.com" class="contact-item reveal">
+            <span class="ci-icon">✉️</span>
+            <div class="min-w-0"><strong>Email</strong><span class="editable truncate" data-key="contactEmail">email@you.com</span></div>
+          </a>
+          <a href="https://linkedin.com/in/username" target="_blank" rel="noopener" class="contact-item reveal">
+            <span class="ci-icon">💼</span>
+            <div class="min-w-0"><strong>LinkedIn</strong><span class="editable truncate" data-key="contactLinkedin">linkedin.com/in/username</span></div>
+          </a>
+          <a href="https://instagram.com/username" target="_blank" rel="noopener" class="contact-item reveal">
+            <span class="ci-icon">📸</span>
+            <div class="min-w-0"><strong>Instagram</strong><span class="editable truncate" data-key="contactIg">@username</span></div>
+          </a>
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="contact-item reveal">
+            <span class="ci-icon">💬</span>
+            <div class="min-w-0"><strong>WhatsApp</strong><span class="editable truncate" data-key="contactWa">+62 812-3456-7890</span></div>
+          </a>
+        </div>
+
+        <form id="contactForm" class="contact-form reveal">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <input type="text" name="name" placeholder="Your Name" required class="edit-input" />
+            <input type="email" name="email" placeholder="Your Email" required class="edit-input" />
+          </div>
+          <input type="text" name="subject" placeholder="Subject" required class="edit-input" />
+          <textarea name="message" rows="5" placeholder="Write your message..." required class="edit-input resize-y"></textarea>
+          <button type="submit" class="btn-primary">Send Message →</button>
+          <p id="formNote" class="text-sm mt-1"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <div class="flex items-center gap-2 text-sm" style="color:var(--text-muted);">
+        <span class="logo-badge text-xs">C</span>
+        <span>© <span id="year"></span> ChrisDev. Built with ❤.</span>
+      </div>
+      <a href="#home" class="text-sm font-semibold" style="color:var(--accent-blue);">↑ Back to top</a>
+    </div>
+  </footer>
+
+  <!-- ============ PASSWORD MODAL ============ -->
+  <div id="passwordModal" class="modal">
+    <div class="modal-box !max-w-sm">
+      <div class="modal-head">
+        <h3 class="font-display font-bold text-lg">🔒 Owner Access</h3>
+        <button id="pwdClose" type="button" class="modal-close">✕</button>
+      </div>
+      <form id="passwordForm" class="modal-form">
+        <p class="text-sm mb-1" style="color:var(--text-muted);">Enter password to unlock Edit Mode.</p>
+        <input type="password" id="pwdInput" placeholder="Password..." required
+          autocomplete="off" class="edit-input" />
+        <p id="pwdError" class="text-sm font-semibold" style="color:var(--accent-red);min-height:1.2em;"></p>
+        <div class="flex gap-2 justify-end mt-1">
+          <button type="button" id="pwdCancel" class="btn-outline !py-2.5 !px-5 text-sm">Cancel</button>
+          <button type="submit" class="btn-primary !py-2.5 !px-5 text-sm">Unlock</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ PORTFOLIO MODAL ============ -->
+  <div id="portfolioModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="modalTitle" class="font-display font-bold text-lg">Add Portfolio</h3>
+        <button id="modalClose" type="button" class="modal-close">✕</button>
+      </div>
+      <form id="portfolioForm" class="modal-form">
+        <input type="hidden" id="pfId" />
+        <label>Title</label>
+        <input type="text" id="pfTitle" required placeholder="e.g. School Profile Website" class="edit-input" />
+        <label>Category</label>
+        <select id="pfCategory" class="edit-input">
+          <option value="web">Web</option>
+          <option value="design">Design</option>
+          <option value="organisasi">Organization</option>
+          <option value="prestasi">Achievement</option>
+        </select>
+        <label>Role &amp; Responsibilities</label>
+        <textarea id="pfDesc" rows="4" required placeholder="e.g. Served as Front-End Developer..." class="edit-input resize-y"></textarea>
+        <label>Image</label>
+        <input type="file" id="pfImage" accept="image/*" class="edit-input file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:bg-accent-blue/20 file:text-accent-blue-light file:font-semibold file:cursor-pointer" />
+        <input type="text" id="pfImageUrl" placeholder="or paste image URL..." class="edit-input" />
+        <label>Tags (comma-separated)</label>
+        <input type="text" id="pfTags" placeholder="HTML, CSS, Teamwork" class="edit-input" />
+        <div class="flex gap-2 justify-end mt-3">
+          <button type="button" id="modalCancel" class="btn-outline !py-2.5 !px-5 text-sm">Cancel</button>
+          <button type="submit" class="btn-primary !py-2.5 !px-5 text-sm">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
